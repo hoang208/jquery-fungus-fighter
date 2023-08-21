@@ -58,6 +58,11 @@ function starFireAttack(event) {
 }
 //end starFireAttack()
 
+function hpRegen(){
+    hpValue+=1;
+    render();
+}
+
 function render() {
     if (hpValue <= 0) {
         hpValue = 0;
@@ -66,7 +71,12 @@ function render() {
         apValue = 0;
         $('.freaky-fungus').removeClass('walk').addClass('jump');
         $('.attack-btn').attr("disabled", true);
+    } if (hpValue <= 50) {
+        setInterval(hpRegen, 1000);
     }
     $('.ap-text').text(apValue + " AP");
+    $('#ap-meter').val(apValue);
     $('.hp-text').text(hpValue + " HP");
+    $('#hp-meter').val(hpValue);
 }
+//end render()
